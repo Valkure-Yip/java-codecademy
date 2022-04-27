@@ -201,6 +201,89 @@ When this runs, the command `System.out.println(myCar)` will print `This is a re
 
 
 
+### this` keyword
+
+The `this` keyword is a reference to the current object. 
+
+
+
+### static methods & variables
+
+- Static methods and variables are associated with the class as a whole, not objects of the class.
+- Static methods and variables are declared as static by using the `static` keyword upon declaration.
+- Static methods cannot interact with non-static instance variables. This is due to static methods not having a `this` reference.
+- Both static methods and non-static methods can interact with static variables.
+
+Math **static method:**
+
+```java
+double randomNumber = Math.random();
+// Stores a random decimal between 0.0 and 1.0 in randomNumber
+
+```
+
+We didn’t need to create a `Math` object (like `Math myMathObject = new Math()`) in order to use that method. We could just call it using the class name.
+
+notice that our `main()` methods have been `static` this whole time. When Java runs your program, it calls that the main method of your class — `YourClassName.main()`.
+
+**static variable:**
+
+```java
+public class Dog{
+ 
+  // Static variables
+  public static String genus = "Canis";
+ 
+  //Instance variables
+  public int age;
+  public String name;
+ 
+  public Dog(int inputAge, String inputName){
+    this.age = inputAge;
+    this.name = inputName;
+  }
+}
+```
+
+you can still access static variables from a specific object of the class. However, no matter what object you use to access the variable, the value will always be the same. You can think of it as all objects of the class sharing the same variable
+
+尽量不用this关键词来访问static variable， 除非有本地变量同名
+
+
+
+### inheritance
+
+```java
+public class Ramen extends Noodle {
+  Ramen() {  
+    super(30.0, 0.3, "flat", "wheat flour");  
+  }
+```
+
+<img src="https://content.codecademy.com/courses/learn-java/revised-2019/access-modifiers-chart.png" alt="public is visible everywhere; protected is visible in the class, the package, and child classes; a member with no modifier is visible in the class and package; private is visible only in the class itself" style="zoom:20%;" />
+
+
+
+**`final`**
+
+If we add `final` before a parent class method’s access modifier, we disallow any child classes from changing that method.
+
+```java
+final public boolean isTasty() {
+
+  return true;
+
+}
+```
+
+
+
+### polymophism
+
+
+
+
+
 ## Conditional control
 
 `&&, ||`:
@@ -479,3 +562,4 @@ When we use `.compareTo()`, we must pay attention to the return value:
 ### `this` keyword
 
 The `this` keyword is a reference to the current object. 
+
