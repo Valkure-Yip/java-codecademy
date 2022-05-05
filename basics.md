@@ -280,6 +280,61 @@ final public boolean isTasty() {
 
 ### polymophism
 
+`@Override` & `super.<parentMethod>()`
+
+```java
+class CheckingAccount extends BankAccount {
+  public CheckingAccount(double balance) {
+    super(balance);
+  }
+ 
+  @Override
+  public void printBalance() {
+    System.out.println("Your checking account balance is $" + balance);
+  }
+ 
+  public void checkBalances() {
+    // calls method from CheckingAccount
+    printBalance();
+    // calls method from BankAccount
+    super.printBalance();
+  }
+ 
+  public static void main(String[] args) {
+    CheckingAccount myCheckings = new CheckingAccount(5000);
+    myCheckings.checkBalances();
+  }
+}
+```
+
+
+
+**Using a Child Class as its Parent Class**:
+
+```java
+BankAccount kaylasAccount = new CheckingAccount(600.00);
+```
+
+可以使用子类的多态继承方法，但不能使用子类独有而父类没有的方法；
+
+
+
+**Child Classes in Arrays and ArrayLists**
+
+we can put instances of different classes that share a parent class together in an array or `ArrayList`
+
+
+
+**总结**
+
+- A Java class can inherit fields and methods from another class.
+- Each Java class requires its own file, but only one class in a Java package needs a `main()` method.
+- Child classes inherit the parent constructor by default, but it’s possible to modify the constructor using `super()` or override it completely.
+- You can use `protected` and `final` to control child class access to parent class members.
+- Java’s OOP principle of polymorphism means you can use a child class object like a member of its parent class, but also give it its own traits.
+- You can override parent class methods in the child class, ideally using the `@Override` keyword.
+- It’s possible to use objects of different classes that share a parent class together in an array or `ArrayList`.
+
 
 
 
@@ -555,6 +610,8 @@ When we use `.compareTo()`, we must pay attention to the return value:
 - If the value is less than `0`, then the `String` object is lexicographically less than the `String` object argument.
 - If the value is greater than `0`, then the `String` object is lexicographically greater than the `String` object argument.
 
+
+
 ## Access & Scope
 
 `public` & `private`
@@ -563,3 +620,30 @@ When we use `.compareTo()`, we must pay attention to the return value:
 
 The `this` keyword is a reference to the current object. 
 
+
+
+## Exception handle
+
+```java
+try {
+ 
+  //  Block of code to try
+ 
+} catch (NullPointerException e) {
+ 
+  //  Code to handle a NullPointerException
+ 
+} catch (ArithmeticException e) {
+ 
+  //  Code to handle an ArithmeticException
+ 
+}
+```
+
+Print out error:
+
+```java
+System.err.println(err);
+```
+
+###### 
